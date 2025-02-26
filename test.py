@@ -5,7 +5,7 @@ import locale
 import platform
 
 WORDS = ('zkouška', 'zkouzka', 'zkouaka', 'Français', '中文')
-LOCALES = (None, ("en_US", "UTF-8"))
+LOCALES = (None, "en_US.UTF-8")
 
 FIXTURE = [(locale_name, word) for locale_name in LOCALES for word in WORDS]
 
