@@ -1,33 +1,14 @@
 #!/usr/bin/env python
 
+import pytest
 import locale
 
-words = ('zkouška', 'zkouzka', 'zkouaka', 'Français', '中文')
+WORDS = ('zkouška', 'zkouzka', 'zkouaka', 'Français', '中文')
+LOCALES = (None, "en_US", "en_US.UTF-8", "C.UTF-8")
 
-def test():
-    for word in words:
-        try:
-            print(f"strxfrm({word!r}) = {locale.strxfrm(word)!r}")
-        except OSError as error:
-            print(f"strxfrm({word!r}) failed with {error}")
-    print()
+FIXTURE = [(locale_name, word) for locale_name in LOCALES for word in WORDS]
 
-print("no locale")
-test()
-
-print("C.UTF-8")
-locale.setlocale(locale.LC_ALL, ("C", "UTF-8"))
-test()
-
-
-print("en_US.UTF-8")
-locale.setlocale(locale.LC_ALL, ("en_US", "UTF-8"))
-test()
-
-print("C.UTF-8")
-locale.setlocale(locale.LC_ALL, ("C", "UTF-8"))
-test()
-
-print("en_US")
-locale.setlocale(locale.LC_ALL, ("en_US", "UTF-8"))
-test()
+@pytest.mark.parametrize("locale_name,word", FIXTURE)
+def test(locale_name, word):
+    locale.setlocale(locale.LC_ALL, locale_name)
+    print(f"strxfrm({word!r}) = {locale.strxfrm(word)!r}")
