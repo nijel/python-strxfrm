@@ -2,9 +2,14 @@
 
 import locale
 
+words = ('zkouška', 'zkouzka', 'zkouaka', 'Français', '中文')
+
 def test():
-    for word in ('zkouška', 'zkouzka', 'zkouaka'):
-        print(f"strxfrm({word!r}) = {locale.strxfrm(word)!r}")
+    for word in words:
+        try:
+            print(f"strxfrm({word!r}) = {locale.strxfrm(word)!r}")
+        except OSError as error:
+            print(f"strxfrm({word!r}) failed with {error}")
     print()
 
 print("no locale")
@@ -23,3 +28,6 @@ print("C.UTF-8")
 locale.setlocale(locale.LC_ALL, ("C", "UTF-8"))
 test()
 
+print("en_US")
+locale.setlocale(locale.LC_ALL, ("en_US", "UTF-8"))
+test()
