@@ -4,7 +4,7 @@ import pytest
 import locale
 
 WORDS = ('zkouška', 'zkouzka', 'zkouaka', 'Français', '中文')
-LOCALES = (None, "en_US", "en_US.UTF-8", "C.UTF-8")
+LOCALES = (None, "en_US", ("en_US", "UTF-8"), ("C", "UTF-8"))
 
 FIXTURE = [(locale_name, word) for locale_name in LOCALES for word in WORDS]
 
