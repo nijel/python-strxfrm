@@ -29,3 +29,5 @@ jobs:
         python-version: ${{ matrix.python-version }}
         allow-prereleases: true
     - run: uvx pytest test.py
+    - run: cc test.c -o test.bin
+    - run: ./test.bin
