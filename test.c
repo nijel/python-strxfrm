@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <wchar.h>
 
-int main(int argc, char* argv) {
+int main(int argc, char** argv) {
     wchar_t *buf;
     size_t len;
     wchar_t string[] = L"š";
