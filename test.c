@@ -16,4 +16,5 @@ int main(int argc, char** argv) {
 
     printf("wcsxfrm(1)=%zd\n", wcsxfrm(buf, string, 1));
     printf("wcsxfrm(40)=%zd\n", wcsxfrm(buf, string, 40));
+    printf("buf=%ls\n", buf);
 }
