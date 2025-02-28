@@ -10,6 +10,7 @@ int main(int argc, char** argv) {
     wchar_t *buf;
     size_t len;
     wchar_t string[] = L"zkouška žřščřščřšě";
+    wchar_t string2[] = L"zkouska zrscrscrse";
 
     buf = malloc(sizeof(wchar_t) * 400);
 
@@ -19,5 +20,7 @@ int main(int argc, char** argv) {
     printf("wcsxfrm(1)=%zd / %d\n", wcsxfrm(buf, string, 1), errno);
     errno = 0;
     printf("wcsxfrm(40)=%zd / %d \n", wcsxfrm(buf, string, 400), errno);
+    printf("buf=%ls\n", buf);
+    printf("wcsxfrm(40)=%zd / %d \n", wcsxfrm(buf, string2, 400), errno);
     printf("buf=%ls\n", buf);
 }
