@@ -30,4 +30,4 @@ jobs:
         allow-prereleases: true
     - run: cc test.c -o test.bin
     - run: ./test.bin
-    - run: uvx --with weblate-language-data pytest test.py
+    - run: uvx --with weblate-language-data --with pytest-repeat pytest --count=100 test.py
